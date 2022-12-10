@@ -1,25 +1,26 @@
+
+let submitBtn = document.querySelector("button[type='submit']");
+submitBtn.addEventListener('click', function(event){
+    event.preventDefault();
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    addBookToLibrary(title, author, pages);
+    displayBooks();
+});
+
 let myLibrary = [];
 
-function Book(title, author, pgs, read) {
+function Book(title, author, pgs) {
     this.title = title;
     this.author = author;
     this.pages = pgs;
-    this.hasRead = read;
+    this.hasRead = false;
 }
 
 // title, author, pages, have you read it?, and a submit button
-function addBookToLibrary(){
-    let title = prompt("What is the title?: ");
-    let author = prompt("What is the auhtor?: ");
-    let pages = prompt("How many page?: ");
-    let hasRead = prompt("Have you read it?: ");
-    if(hasRead.toLowerCase() == 'yes') {
-        hasRead = true;
-    } else {
-        hasRead = false;
-    }
-
-    let newBook = new Book(title, author, pages, hasRead);
+function addBookToLibrary(t, a, p){
+    let newBook = new Book(t, a, p);
     myLibrary.push(newBook);
 };
 
@@ -32,5 +33,5 @@ function displayBooks() {
     });
 }
 
-addBookToLibrary();
-displayBooks();
+// addBookToLibrary();
+// displayBooks();
